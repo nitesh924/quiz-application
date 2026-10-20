@@ -1,0 +1,18 @@
+Assignment: Interactive Quiz App
+Objective: Build a quiz application where users answer multiple choice questions, more to the next question, and see their final score.
+
+Requirements
+1. Display one question at a time with four answer options.
+2. when the user selects an option, indicate whether the answer is correct or incorrect.
+3. Disable the options after an answer is selected.
+4. show a next question button to move forward.
+5. Maintain the user's score throughtout the quiz.
+6. After the final question, display the final score, such as your score: 7/10.
+7. Add a restart quiz button to start again.
+
+Rules for students
+- use only html, css, and js
+- store question in an array of objects
+- use addeventlisteners() for handling clicks
+- use Dom methods update questions, options and results dynamically
+- do not reload the page when moving between questions
