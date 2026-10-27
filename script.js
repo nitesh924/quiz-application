@@ -2,7 +2,7 @@ const quizData = [
   {
     question:
       "Which of the following keywords is used to declare a block-scoped variable in JavaScript?",
-    answers: [
+    options: [
       { text: "var", correct: false },
       { text: "let", correct: true },
       { text: "function", correct: false },
@@ -11,7 +11,7 @@ const quizData = [
   },
   {
     question: "What is the output of `typeof null` in JavaScript?",
-    answers: [
+    options: [
       { text: "'null'", correct: false },
       { text: "'undefined'", correct: false },
       { text: "'object'", correct: true },
@@ -21,7 +21,7 @@ const quizData = [
   {
     question:
       "Which method is used to add one or more elements to the end of an array in JavaScript?",
-    answers: [
+    options: [
       { text: "push()", correct: true },
       { text: "pop()", correct: false },
       { text: "shift()", correct: false },
@@ -30,7 +30,7 @@ const quizData = [
   },
   {
     question: "What does the `===` operator check in JavaScript?",
-    answers: [
+    options: [
       { text: "Only value equality", correct: false },
       { text: "Both value and data type equality", correct: true },
       { text: "Only data type equality", correct: false },
@@ -40,7 +40,7 @@ const quizData = [
   {
     question:
       "Which built-in method creates a new array with all elements that pass the test implemented by the provided function?",
-    answers: [
+    options: [
       { text: "map()", correct: false },
       { text: "forEach()", correct: false },
       { text: "filter()", correct: true },
@@ -54,18 +54,46 @@ const questionContainer = document.getElementById("question-container");
 const quizStartContainer = document.getElementById("quiz-start-container");
 const questionCount = document.getElementById("question-count");
 
+const START = 5;
+let seconds = START;
+let interval = null;
+
+const timer = document.getElementById("timer");
+
+function updateTimer() {
+  timer.textContent = seconds;
+  if (seconds === 0) {
+    clearInterval(interval)
+    interval = null;
+    timer.textContent = "Time up!";
+    const selected = document.querySelector("input[name=answer]:checked",);
+    if(selected && quizData[currentQuestionIndex].options[selected.value].correct) {
+      score++
+    }
+    displayResult()
+    return;
+  }
+  seconds--;
+}
+
+function startTimer() {
+  clearInterval(interval);
+  seconds = START;
+  updateTimer();
+  interval = setInterval(updateTimer, 1000);
+}
+
 startBtn.addEventListener("click", () => {
   quizStartContainer.classList.add("hidden");
   questionContainer.classList.remove("hidden");
-  displayQuestion();
+  displayQuestion()
+  startTimer();
 });
 
 const question = document.getElementById("question-text");
 const options = document.getElementById("options-list");
 const nextBtn = document.getElementById("next-btn");
 const finishBtn = document.getElementById("finish-btn");
-
-let currentQuestionIndex = 0;
 
 const defaultClasses = [
   "border-white/10",
@@ -77,11 +105,11 @@ function checkSelectedAnswer(selectedRadio, currentQuestion) {
   const allRadios = options.querySelectorAll('input[name="answer"]');
 
   allRadios.forEach((radio) => {
-    radio.disabled = true
+    radio.disabled = true;
   });
 
   const selectedIndex = parseInt(selectedRadio.value);
-  const selectedAnswer = currentQuestion.answers[selectedIndex];
+  const selectedAnswer = currentQuestion.options[selectedIndex];
   const selectedLabel = selectedRadio.closest(".quiz-option");
 
   selectedLabel.classList.remove(...defaultClasses);
@@ -91,7 +119,7 @@ function checkSelectedAnswer(selectedRadio, currentQuestion) {
   } else {
     selectedLabel.classList.add("border-rose-500/40", "bg-rose-500/15");
 
-    const correctIndex = currentQuestion.answers.findIndex((a) => a.correct);
+    const correctIndex = currentQuestion.options.findIndex((a) => a.correct);
     const correctLabel = allRadios[correctIndex].closest(".quiz-option");
 
     correctLabel.classList.remove(...defaultClasses);
@@ -99,6 +127,7 @@ function checkSelectedAnswer(selectedRadio, currentQuestion) {
   }
 }
 
+let currentQuestionIndex = 0;
 
 function displayQuestion() {
   const currentQuestion = quizData[currentQuestionIndex];
@@ -107,7 +136,7 @@ function displayQuestion() {
 
   options.innerHTML = "";
 
-  currentQuestion.answers.forEach((answer, index) => {
+  currentQuestion.options.forEach((answer, index) => {
     const choice = document.createElement("div");
     choice.innerHTML = `
           <label class="quiz-option cursor-pointer border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl p-4 flex items-center gap-3 transition duration-200">
@@ -134,8 +163,6 @@ function displayQuestion() {
 }
 displayQuestion();
 
-
-
 function checkAnswer() {
   const selectedAnswerIndex = document.querySelector(
     "input[name=answer]:checked",
@@ -148,7 +175,7 @@ function checkAnswer() {
 
   const selectedAnswer = parseInt(selectedAnswerIndex.value);
 
-  if (quizData[currentQuestionIndex].answers[selectedAnswer].correct) {
+  if (quizData[currentQuestionIndex].options[selectedAnswer].correct) {
     score++;
   }
 
@@ -160,6 +187,7 @@ nextBtn.addEventListener("click", () => {
 
   currentQuestionIndex++;
   displayQuestion();
+  startTimer();
 });
 
 let score = 0;
@@ -170,13 +198,17 @@ const resetBtn = document.getElementById("reset-btn");
 finishBtn.addEventListener("click", displayResult);
 
 function displayResult() {
-  if (!checkAnswer()) return;
+  // if (!checkAnswer()) return;
+  clearInterval(interval);
+  interval = null
   questionContainer.classList.add("hidden");
   resultContainer.classList.remove("hidden");
   scoreElement.textContent = `${score} / ${quizData.length}`;
 }
 
 resetBtn.addEventListener("click", () => {
+  clearInterval(interval);
+  interval = null
   currentQuestionIndex = 0;
   score = 0;
   resultContainer.classList.add("hidden");

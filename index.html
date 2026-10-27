@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Custom radio button active label state styling */
-        .quiz-option input[type="radio"]:checked + span {
+        .quiz-option input[type="radio"]:checked+span {
             font-weight: 600;
         }
     </style>
 </head>
+
 <body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4">
 
     <main class="w-full max-w-2xl mx-auto">
@@ -22,38 +24,53 @@
 
             <!-- 1. QUIZ SELECTION SECTION -->
             <section id="quiz-start-container" class=" w-full" aria-labelledby="app-title">
-                <div class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
+                <div
+                    class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
                     <div class="p-6 sm:p-10">
 
                         <!-- Main Heading -->
-                        <h1 id="app-title" class="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">Quiz Application</h1>
+                        <h1 id="app-title" class="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">Quiz
+                            Application</h1>
 
                         <!-- Select Category Fieldset -->
                         <fieldset class="mb-6 text-center border-0 p-0">
                             <legend class="text-base text-gray-400 mb-3 mx-auto font-medium">Select Category</legend>
                             <div id="category-container" class="flex flex-wrap justify-center gap-2">
-                                <button type="button" class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">HTML</button>
-                                <button type="button" class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">CSS</button>
-                                <button type="button" class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">JavaScript</button>
-                                <button type="button" class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">ReactJS</button>
+                                <button type="button"
+                                    class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">HTML</button>
+                                <button type="button"
+                                    class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">CSS</button>
+                                <button type="button"
+                                    class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">JavaScript</button>
+                                <button type="button"
+                                    class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">ReactJS</button>
                             </div>
                         </fieldset>
 
                         <!-- Select Number of Questions Fieldset -->
                         <fieldset class="mb-6 text-center border-0 p-0">
-                            <legend class="text-base text-gray-400 mb-3 mx-auto font-medium">Select Number of Questions</legend>
+                            <legend class="text-base text-gray-400 mb-3 mx-auto font-medium">Select Number of Questions
+                            </legend>
                             <div class="flex flex-wrap justify-center gap-2">
-                                <button type="button" class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">5</button>
-                                <button type="button" class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">10</button>
-                                <button type="button" class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">15</button>
-                                <button type="button" class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">20</button>
+                                <button type="button"
+                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">5</button>
+                                <button type="button"
+                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">10</button>
+                                <button type="button"
+                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">15</button>
+                                <button type="button"
+                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">20</button>
                             </div>
                         </fieldset>
 
                         <!-- Start Quiz Actions -->
                         <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-                            <button type="button" id="start-quiz" class="bg-pink-500 hover:bg-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-sm transition duration-200">Start Quiz</button>
-                            <button type="button" id="game-rule" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3 rounded-lg transition duration-200">Game Rules</button>
+                            <button type="button" id="start-quiz"
+                                class="bg-pink-500 hover:bg-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-sm transition duration-200">Start
+                                Quiz</button>
+                            <button type="button" id="game-rule"
+                                class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3 rounded-lg transition duration-200">Game
+                                Rules</button>
                         </div>
 
                     </div>
@@ -62,13 +79,15 @@
 
             <!-- 2. QUIZ QUESTION DISPLAY SECTION -->
             <section id="question-container" class="hidden w-full" aria-label="Quiz Question Container">
-                <div class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
+                <div
+                    class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
                     <div class="p-6 sm:p-8">
 
                         <!-- Question Header / Timer Bar -->
                         <header class="flex justify-between items-center mb-4">
                             <h2 class="text-xl font-bold text-white">Quiz Application</h2>
-                            <div class="bg-gray-800 text-white font-bold rounded-lg px-3 py-1.5 flex items-center gap-2 border border-white/10" role="timer" aria-live="polite">
+                            <div class="bg-gray-800 text-white font-bold rounded-lg px-3 py-1.5 flex items-center gap-2 border border-white/10"
+                                role="timer" aria-live="polite">
                                 <i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
                                 <span id="timer">10s</span>
                             </div>
@@ -82,25 +101,34 @@
                                 Q1. What does HTML stand for?
                             </h3>
 
-                            <div id="options-list" class="flex flex-col gap-3" role="radiogroup" aria-labelledby="question-text">
+                            <div id="options-list" class="flex flex-col gap-3" role="radiogroup"
+                                aria-labelledby="question-text">
 
-                                <label class="quiz-option cursor-pointer border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl p-4 flex items-center gap-3 transition duration-200">
-                                    <input type="radio" name="quiz-option" value="0" class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
+                                <label
+                                    class="quiz-option cursor-pointer border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl p-4 flex items-center gap-3 transition duration-200">
+                                    <input type="radio" name="quiz-option" value="0"
+                                        class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
                                     <span class="text-gray-200 text-sm sm:text-base">Hyper Text Markup Language</span>
                                 </label>
 
-                                <label class="quiz-option cursor-pointer border border-emerald-500/40 bg-emerald-500/15 rounded-xl p-4 flex items-center gap-3 transition duration-200">
-                                    <input type="radio" name="quiz-option" value="1" class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
+                                <label
+                                    class="quiz-option cursor-pointer border border-emerald-500/40 bg-emerald-500/15 rounded-xl p-4 flex items-center gap-3 transition duration-200">
+                                    <input type="radio" name="quiz-option" value="1"
+                                        class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
                                     <span class="text-gray-200 text-sm sm:text-base">High Text Marking Language</span>
                                 </label>
 
-                                <label class="quiz-option cursor-pointer border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl p-4 flex items-center gap-3 transition duration-200">
-                                    <input type="radio" name="quiz-option" value="2" class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
+                                <label
+                                    class="quiz-option cursor-pointer border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl p-4 flex items-center gap-3 transition duration-200">
+                                    <input type="radio" name="quiz-option" value="2"
+                                        class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
                                     <span class="text-gray-200 text-sm sm:text-base">Hyper Text Markdown Language</span>
                                 </label>
 
-                                <label class="quiz-option cursor-pointer border border-rose-500/40 bg-rose-500/15 rounded-xl p-4 flex items-center gap-3 transition duration-200">
-                                    <input type="radio" name="quiz-option" value="3" class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
+                                <label
+                                    class="quiz-option cursor-pointer border border-rose-500/40 bg-rose-500/15 rounded-xl p-4 flex items-center gap-3 transition duration-200">
+                                    <input type="radio" name="quiz-option" value="3"
+                                        class="w-4 h-4 text-pink-500 bg-gray-900 border-gray-600 focus:ring-pink-500">
                                     <span class="text-gray-200 text-sm sm:text-base">None of the above</span>
                                 </label>
 
@@ -114,10 +142,14 @@
                             <small class="text-gray-400 font-bold text-sm" id="question-count">
                                 1 of 5 Questions
                             </small>
-                            <button type="button" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-2 rounded-lg transition duration-200" id="next-btn">
+                            <button type="button"
+                                class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-2 rounded-lg transition duration-200"
+                                id="next-btn">
                                 Next
                             </button>
-                            <button type="button" class="hidden bg-pink-500 hover:bg-pink-400 text-white font-semibold px-6 py-2 rounded-lg transition duration-200" id="finish-btn">
+                            <button type="button"
+                                class="hidden bg-pink-500 hover:bg-pink-400 text-white font-semibold px-6 py-2 rounded-lg transition duration-200"
+                                id="finish-btn">
                                 Finish
                             </button>
                         </footer>
@@ -128,9 +160,10 @@
 
             <!-- 3. QUIZ RESULT SECTION -->
             <section id="result-section" class="hidden w-full" aria-labelledby="result-title">
-                <div class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
+                <div
+                    class="bg-white/[0.05] shadow-2xl rounded-2xl border border-white/10 backdrop-blur-md overflow-hidden">
                     <div class="p-6 sm:p-10 text-center">
-                        
+
                         <article id="result-container">
                             <h2 class="text-2xl font-bold mb-3 text-white" id="result-title">
                                 Quiz Results
@@ -144,7 +177,9 @@
 
                         <!-- Reset Button -->
                         <footer>
-                            <button type="button" class="border border-rose-500 text-rose-400 hover:bg-rose-500 hover:text-white font-semibold px-6 py-3 rounded-lg transition duration-200 inline-flex items-center" id="reset-btn">
+                            <button type="button"
+                                class="border border-rose-500 text-rose-400 hover:bg-rose-500 hover:text-white font-semibold px-6 py-3 rounded-lg transition duration-200 inline-flex items-center"
+                                id="reset-btn">
                                 <i class="fa-solid fa-arrow-rotate-right mr-2" aria-hidden="true"></i>
                                 Restart Quiz
                             </button>
@@ -158,4 +193,5 @@
     </main>
     <script src="script.js"></script>
 </body>
+
 </html>
