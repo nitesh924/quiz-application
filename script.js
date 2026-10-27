@@ -54,7 +54,7 @@ const questionContainer = document.getElementById("question-container");
 const quizStartContainer = document.getElementById("quiz-start-container");
 const questionCount = document.getElementById("question-count");
 
-const START = 5;
+const START = 10;
 let seconds = START;
 let interval = null;
 
