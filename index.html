@@ -10,7 +10,6 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom radio button active label state styling */
         .quiz-option input[type="radio"]:checked+span {
             font-weight: 600;
         }
@@ -34,7 +33,7 @@
 
                         <!-- Select Category Fieldset -->
                         <fieldset class="mb-6 text-center border-0 p-0">
-                            <legend class="text-base text-gray-400 mb-3 mx-auto font-medium">Select Category</legend>
+                            <legend class="text-base text-pink-400 mb-3 mx-auto font-medium">Select Category</legend>
                             <div id="category-container" class="flex flex-wrap justify-center gap-2">
                                 <button type="button"
                                     class="flex-1 sm:flex-initial border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2.5 rounded-lg font-medium transition duration-200">HTML</button>
@@ -47,30 +46,19 @@
                             </div>
                         </fieldset>
 
-                        <!-- Select Number of Questions Fieldset -->
-                        <fieldset class="mb-6 text-center border-0 p-0">
-                            <legend class="text-base text-gray-400 mb-3 mx-auto font-medium">Select Number of Questions
-                            </legend>
-                            <div class="flex flex-wrap justify-center gap-2">
-                                <button type="button"
-                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">5</button>
-                                <button type="button"
-                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">10</button>
-                                <button type="button"
-                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">15</button>
-                                <button type="button"
-                                    class="border border-white/10 bg-white/5 text-white hover:bg-pink-600 hover:border-pink-600 px-5 py-2 rounded-lg font-medium transition duration-200">20</button>
-                            </div>
-                        </fieldset>
+                        
 
                         <!-- Start Quiz Actions -->
                         <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
                             <button type="button" id="start-quiz"
                                 class="bg-pink-500 hover:bg-pink-400 text-white font-semibold px-8 py-3 rounded-lg shadow-sm transition duration-200">Start
                                 Quiz</button>
-                            <button type="button" id="game-rule"
+
+                            <button type="button" id="openModalBtn"
                                 class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3 rounded-lg transition duration-200">Game
                                 Rules</button>
+
+
                         </div>
 
                     </div>
@@ -188,6 +176,41 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Instructions Modal -->
+            <dialog id="popup-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 sm:p-4 w-full h-full max-w-none max-h-none border-none">
+
+                <div class="relative w-full max-w-lg max-h-[90dvh] overflow-y-auto bg-slate-800 border border-slate-700 rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 space-y-4">
+
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+                        <h3 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-regular fa-font-awesome text-blue-400"></i> How to Play
+                        </h3>
+                        <button id="closeModalCross" type="button" class="text-slate-400 hover:bg-slate-700 hover:text-white rounded-lg text-sm w-9 h-9 inline-flex justify-center items-center transition-all cursor-pointer">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="space-y-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                        <p class="flex items-start gap-2">
+                            <span class="text-pink-500 font-bold">1.</span> <span>Select your preferred category (HTML, CSS, JavaScript, or ReactJS).</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="text-pink-500 font-bold">2.</span> <span>Click on <strong class="text-white">Start Quiz</strong> to begin the timer for each question.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="text-pink-500 font-bold">3.</span> <span>Choose the correct answer option before the 10-second timer runs out.</span>
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <span class="text-pink-500 font-bold">4.</span> <span>Each correct answer increases your score. Try to get the highest score!</span>
+                        </p>
+                    </div>
+
+                </div>
+            </dialog>
 
         </div>
     </main>
